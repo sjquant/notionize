@@ -1,0 +1,21 @@
+[project]
+name = "notionizer"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mistune>=2.0.0",
+    "pydantic>=2.1",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.394",
+    "ruff>=0.9.6",
+]
+
+
+[build-system]
+requires = ['hatchling', 'hatch-fancy-pypi-readme>=22.5.0']
+build-backend = 'hatchling.build'
