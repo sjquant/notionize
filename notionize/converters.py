@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from typing import Any, Literal, cast
 from abc import ABC, abstractmethod
 
-from notionizer.enums import NotionBlockType, NotionLanguage
-from notionizer.models import (
+from notionize.enums import NotionBlockType, NotionLanguage
+from notionize.models import (
     NotionAnnotations,
     NotionBlock,
     NotionExternal,
@@ -107,7 +107,7 @@ class ListConverter(BlockConverter):
                 blocks.extend(convert_inline_tokens(child.get("children", [])))
             else:
                 # For Nested List
-                from notionizer.main import Notionizer
+                from notionize.main import Notionizer
 
                 notionizer = Notionizer()
                 nested_blocks = notionizer.convert_blocks([child])

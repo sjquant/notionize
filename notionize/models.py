@@ -1,7 +1,7 @@
 from pydantic import BaseModel, ConfigDict, Field, model_serializer
 from typing import Any
 
-from notionizer.enums import NotionBlockType, NotionColor
+from notionize.enums import NotionBlockType, NotionColor
 
 
 class NotionModel(BaseModel):

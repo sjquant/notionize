@@ -178,7 +178,7 @@ wheels = [
 ]
 
 [[package]]
-name = "notionizer"
+name = "notionize"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

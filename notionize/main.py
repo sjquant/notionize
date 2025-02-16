@@ -1,6 +1,6 @@
 from typing import Any, Callable
-from notionizer.enums import NotionBlockType
-from notionizer.converters import (
+from notionize.enums import NotionBlockType
+from notionize.converters import (
     BlockConverter,
     CodeBlockConverter,
     DividerConverter,
@@ -12,8 +12,8 @@ from notionizer.converters import (
     QuoteConverter,
     TableConverter,
 )
-from notionizer.errors import ConversionError, InvalidMarkdownError, UnknownTokenError
-from notionizer.models import NotionBlock
+from notionize.errors import ConversionError, InvalidMarkdownError, UnknownTokenError
+from notionize.models import NotionBlock
 import mistune
 
 ConverterFactory = Callable[[dict[str, Any]], BlockConverter | None]

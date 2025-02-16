@@ -1,9 +1,9 @@
 import pytest
-from notionizer.enums import NotionBlockType
-from notionizer.main import Notionizer, notionize
-from notionizer.errors import ConversionError, UnknownTokenError
-from notionizer.converters import BlockConverter
-from notionizer.models import NotionBlock
+from notionize.enums import NotionBlockType
+from notionize.main import Notionizer, notionize
+from notionize.errors import ConversionError, UnknownTokenError
+from notionize.converters import BlockConverter
+from notionize.models import NotionBlock
 
 from syrupy.assertion import SnapshotAssertion
 
