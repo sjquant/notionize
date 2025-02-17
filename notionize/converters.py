@@ -20,7 +20,7 @@ class BlockConverter(ABC):
     All concrete converter classes must implement the convert method."""
 
     @abstractmethod
-    def convert(self, token: dict[str, Any]) -> NotionBlock | None:
+    def convert(self, token: dict[str, Any]) -> NotionBlock | list[NotionBlock] | None:
         pass
 
 
@@ -89,6 +89,25 @@ class CodeBlockConverter(BlockConverter):
 
 
 class ListConverter(BlockConverter):
+    """Converts markdown list tokens into Notion list blocks."""
+
+    def convert(self, token: dict[str, Any]) -> list[NotionBlock]:
+        res: list[NotionBlock] = []
+
+        for item in token.get("children", []):
+            converter = ListItemConverter(
+                list_type=(
+                    NotionBlockType.BULLETED
+                    if token.get("ordered", False)
+                    else NotionBlockType.NUMBERED
+                )
+            )
+            res.append(converter.convert(item))
+
+        return res
+
+
+class ListItemConverter(BlockConverter):
     """Converts markdown list item tokens into Notion bulleted or numbered list items.
     Supports nested lists and mixed content within list items."""
 

@@ -258,101 +258,56 @@
 # name: test_list_conversion
   list([
     dict({
-      'bulleted_list_item': dict({
+      'numbered_list_item': dict({
         'children': list([
           dict({
-            'bulleted_list_item': dict({
+            'numbered_list_item': dict({
               'children': list([
                 dict({
-                  'bulleted_list_item': dict({
-                    'children': list([
-                      dict({
-                        'bulleted_list_item': dict({
-                          'children': list([
-                            dict({
-                              'bulleted_list_item': dict({
-                                'children': list([
-                                  dict({
-                                    'bulleted_list_item': dict({
-                                      'rich_text': list([
-                                        dict({
-                                          'annotations': dict({
-                                            'bold': False,
-                                            'code': False,
-                                            'color': 'default',
-                                            'italic': False,
-                                            'strikethrough': False,
-                                            'underline': False,
-                                          }),
-                                          'text': dict({
-                                            'content': 'Nested ordered',
-                                            'link': None,
-                                          }),
-                                          'type': 'text',
-                                        }),
-                                      ]),
-                                    }),
-                                    'object': 'block',
-                                    'type': 'bulleted_list_item',
-                                  }),
-                                  dict({
-                                    'bulleted_list_item': dict({
-                                      'rich_text': list([
-                                        dict({
-                                          'annotations': dict({
-                                            'bold': False,
-                                            'code': False,
-                                            'color': 'default',
-                                            'italic': False,
-                                            'strikethrough': False,
-                                            'underline': False,
-                                          }),
-                                          'text': dict({
-                                            'content': 'Another ordered',
-                                            'link': None,
-                                          }),
-                                          'type': 'text',
-                                        }),
-                                      ]),
-                                    }),
-                                    'object': 'block',
-                                    'type': 'bulleted_list_item',
-                                  }),
-                                ]),
-                                'rich_text': list([
-                                ]),
-                              }),
-                              'object': 'block',
-                              'type': 'bulleted_list_item',
-                            }),
-                          ]),
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Nested unordered',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                    ]),
+                  'numbered_list_item': dict({
                     'rich_text': list([
+                      dict({
+                        'annotations': dict({
+                          'bold': False,
+                          'code': False,
+                          'color': 'default',
+                          'italic': False,
+                          'strikethrough': False,
+                          'underline': False,
+                        }),
+                        'text': dict({
+                          'content': 'Nested ordered',
+                          'link': None,
+                        }),
+                        'type': 'text',
+                      }),
                     ]),
                   }),
                   'object': 'block',
-                  'type': 'bulleted_list_item',
+                  'type': 'numbered_list_item',
+                }),
+                dict({
+                  'numbered_list_item': dict({
+                    'rich_text': list([
+                      dict({
+                        'annotations': dict({
+                          'bold': False,
+                          'code': False,
+                          'color': 'default',
+                          'italic': False,
+                          'strikethrough': False,
+                          'underline': False,
+                        }),
+                        'text': dict({
+                          'content': 'Another ordered',
+                          'link': None,
+                        }),
+                        'type': 'text',
+                      }),
+                    ]),
+                  }),
+                  'object': 'block',
+                  'type': 'numbered_list_item',
                 }),
               ]),
               'rich_text': list([
@@ -366,7 +321,7 @@
                     'underline': False,
                   }),
                   'text': dict({
-                    'content': 'Unordered item 1',
+                    'content': 'Nested unordered',
                     'link': None,
                   }),
                   'type': 'text',
@@ -374,166 +329,161 @@
               ]),
             }),
             'object': 'block',
-            'type': 'bulleted_list_item',
-          }),
-          dict({
-            'bulleted_list_item': dict({
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Unordered item 2',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Some paragraph in list',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'bulleted_list_item',
+            'type': 'numbered_list_item',
           }),
         ]),
         'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Unordered item 1',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
         ]),
       }),
       'object': 'block',
-      'type': 'bulleted_list_item',
+      'type': 'numbered_list_item',
     }),
     dict({
-      'bulleted_list_item': dict({
-        'children': list([
-          dict({
-            'bulleted_list_item': dict({
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Ordered item 1',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'bulleted_list_item',
-          }),
-          dict({
-            'bulleted_list_item': dict({
-              'children': list([
-                dict({
-                  'bulleted_list_item': dict({
-                    'children': list([
-                      dict({
-                        'bulleted_list_item': dict({
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Nested unordered',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                      dict({
-                        'bulleted_list_item': dict({
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Another unordered',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                    ]),
-                    'rich_text': list([
-                    ]),
-                  }),
-                  'object': 'block',
-                  'type': 'bulleted_list_item',
-                }),
-              ]),
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Ordered item 2',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'bulleted_list_item',
-          }),
-        ]),
+      'numbered_list_item': dict({
         'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Unordered item 2',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Some paragraph in list',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
         ]),
       }),
       'object': 'block',
-      'type': 'bulleted_list_item',
+      'type': 'numbered_list_item',
+    }),
+    dict({
+      'numbered_list_item': dict({
+        'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Ordered item 1',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
+        ]),
+      }),
+      'object': 'block',
+      'type': 'numbered_list_item',
+    }),
+    dict({
+      'numbered_list_item': dict({
+        'children': list([
+          dict({
+            'numbered_list_item': dict({
+              'rich_text': list([
+                dict({
+                  'annotations': dict({
+                    'bold': False,
+                    'code': False,
+                    'color': 'default',
+                    'italic': False,
+                    'strikethrough': False,
+                    'underline': False,
+                  }),
+                  'text': dict({
+                    'content': 'Nested unordered',
+                    'link': None,
+                  }),
+                  'type': 'text',
+                }),
+              ]),
+            }),
+            'object': 'block',
+            'type': 'numbered_list_item',
+          }),
+          dict({
+            'numbered_list_item': dict({
+              'rich_text': list([
+                dict({
+                  'annotations': dict({
+                    'bold': False,
+                    'code': False,
+                    'color': 'default',
+                    'italic': False,
+                    'strikethrough': False,
+                    'underline': False,
+                  }),
+                  'text': dict({
+                    'content': 'Another unordered',
+                    'link': None,
+                  }),
+                  'type': 'text',
+                }),
+              ]),
+            }),
+            'object': 'block',
+            'type': 'numbered_list_item',
+          }),
+        ]),
+        'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Ordered item 2',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
+        ]),
+      }),
+      'object': 'block',
+      'type': 'numbered_list_item',
     }),
   ])
 # ---
@@ -715,124 +665,33 @@
       'type': 'quote',
     }),
     dict({
-      'bulleted_list_item': dict({
-        'children': list([
-          dict({
-            'bulleted_list_item': dict({
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Ordered list item 1',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'bulleted_list_item',
-          }),
-          dict({
-            'bulleted_list_item': dict({
-              'children': list([
-                dict({
-                  'bulleted_list_item': dict({
-                    'children': list([
-                      dict({
-                        'bulleted_list_item': dict({
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Nested unordered item',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                      dict({
-                        'bulleted_list_item': dict({
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Another nested item',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                    ]),
-                    'rich_text': list([
-                    ]),
-                  }),
-                  'object': 'block',
-                  'type': 'bulleted_list_item',
-                }),
-              ]),
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Ordered list item 2',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'bulleted_list_item',
-          }),
-        ]),
+      'numbered_list_item': dict({
         'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Ordered list item 1',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
         ]),
       }),
       'object': 'block',
-      'type': 'bulleted_list_item',
+      'type': 'numbered_list_item',
     }),
     dict({
-      'bulleted_list_item': dict({
+      'numbered_list_item': dict({
         'children': list([
           dict({
-            'bulleted_list_item': dict({
+            'numbered_list_item': dict({
               'rich_text': list([
                 dict({
                   'annotations': dict({
@@ -844,7 +703,7 @@
                     'underline': False,
                   }),
                   'text': dict({
-                    'content': 'Unordered list item',
+                    'content': 'Nested unordered item',
                     'link': None,
                   }),
                   'type': 'text',
@@ -852,68 +711,10 @@
               ]),
             }),
             'object': 'block',
-            'type': 'bulleted_list_item',
+            'type': 'numbered_list_item',
           }),
           dict({
-            'bulleted_list_item': dict({
-              'children': list([
-                dict({
-                  'bulleted_list_item': dict({
-                    'children': list([
-                      dict({
-                        'bulleted_list_item': dict({
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Nested ordered item',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                      dict({
-                        'bulleted_list_item': dict({
-                          'rich_text': list([
-                            dict({
-                              'annotations': dict({
-                                'bold': False,
-                                'code': False,
-                                'color': 'default',
-                                'italic': False,
-                                'strikethrough': False,
-                                'underline': False,
-                              }),
-                              'text': dict({
-                                'content': 'Another nested ordered item',
-                                'link': None,
-                              }),
-                              'type': 'text',
-                            }),
-                          ]),
-                        }),
-                        'object': 'block',
-                        'type': 'bulleted_list_item',
-                      }),
-                    ]),
-                    'rich_text': list([
-                    ]),
-                  }),
-                  'object': 'block',
-                  'type': 'bulleted_list_item',
-                }),
-              ]),
+            'numbered_list_item': dict({
               'rich_text': list([
                 dict({
                   'annotations': dict({
@@ -925,7 +726,7 @@
                     'underline': False,
                   }),
                   'text': dict({
-                    'content': 'Another unordered item',
+                    'content': 'Another nested item',
                     'link': None,
                   }),
                   'type': 'text',
@@ -933,14 +734,123 @@
               ]),
             }),
             'object': 'block',
-            'type': 'bulleted_list_item',
+            'type': 'numbered_list_item',
           }),
         ]),
         'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Ordered list item 2',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
         ]),
       }),
       'object': 'block',
-      'type': 'bulleted_list_item',
+      'type': 'numbered_list_item',
+    }),
+    dict({
+      'numbered_list_item': dict({
+        'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Unordered list item',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
+        ]),
+      }),
+      'object': 'block',
+      'type': 'numbered_list_item',
+    }),
+    dict({
+      'numbered_list_item': dict({
+        'children': list([
+          dict({
+            'numbered_list_item': dict({
+              'rich_text': list([
+                dict({
+                  'annotations': dict({
+                    'bold': False,
+                    'code': False,
+                    'color': 'default',
+                    'italic': False,
+                    'strikethrough': False,
+                    'underline': False,
+                  }),
+                  'text': dict({
+                    'content': 'Nested ordered item',
+                    'link': None,
+                  }),
+                  'type': 'text',
+                }),
+              ]),
+            }),
+            'object': 'block',
+            'type': 'numbered_list_item',
+          }),
+          dict({
+            'numbered_list_item': dict({
+              'rich_text': list([
+                dict({
+                  'annotations': dict({
+                    'bold': False,
+                    'code': False,
+                    'color': 'default',
+                    'italic': False,
+                    'strikethrough': False,
+                    'underline': False,
+                  }),
+                  'text': dict({
+                    'content': 'Another nested ordered item',
+                    'link': None,
+                  }),
+                  'type': 'text',
+                }),
+              ]),
+            }),
+            'object': 'block',
+            'type': 'numbered_list_item',
+          }),
+        ]),
+        'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'Another unordered item',
+              'link': None,
+            }),
+            'type': 'text',
+          }),
+        ]),
+      }),
+      'object': 'block',
+      'type': 'numbered_list_item',
     }),
     dict({
       'code': dict({

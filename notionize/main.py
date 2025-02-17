@@ -1,5 +1,4 @@
 from typing import Any, Callable
-from notionize.enums import NotionBlockType
 from notionize.converters import (
     BlockConverter,
     CodeBlockConverter,
@@ -58,12 +57,8 @@ class Notionizer:
             return QuoteConverter()
         elif token_type == "thematic_break":
             return DividerConverter()
-        elif token_type == "list" and token.get("ordered", False):
-            return ListConverter(list_type=NotionBlockType.NUMBERED)
-        elif token_type == "list" and not token.get("ordered", False):
-            return ListConverter(list_type=NotionBlockType.BULLETED)
-        elif token_type == "list_item":
-            return ListConverter(list_type=NotionBlockType.BULLETED)
+        elif token_type == "list":
+            return ListConverter()
         elif token_type == "table":
             return TableConverter()
         elif token_type == "image":
@@ -117,7 +112,12 @@ class Notionizer:
             converter = self._get_converter(token)
             try:
                 block = converter.convert(token)
-                if block is not None:
+                if block is None:
+                    continue
+
+                if isinstance(block, list):
+                    res.extend(block)
+                else:
                     res.append(block)
 
             except Exception as e:
