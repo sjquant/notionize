@@ -431,18 +431,14 @@
       'type': 'paragraph',
     }),
     dict({
-      'object': 'block',
-      'paragraph': dict({
-        'rich_text': list([
-          dict({
-            'external': dict({
-              'url': 'https://example.com/image.jpg',
-            }),
-            'type': 'image',
-          }),
-        ]),
+      'image': dict({
+        'external': dict({
+          'url': 'https://example.com/image.jpg',
+        }),
+        'type': 'external',
       }),
-      'type': 'paragraph',
+      'object': 'block',
+      'type': 'image',
     }),
     dict({
       'object': 'block',

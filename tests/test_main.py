@@ -512,16 +512,7 @@ def test_image_conversion():
         [
             {
                 "object": "block",
-                "type": "paragraph",
-                "paragraph": {
-                    "rich_text": [
-                        {
-                            "type": "image",
-                            "external": {"url": "https://example.com/image.jpg"},
-                        }
-                    ]
-                },
-            }
+                "type": 'image', 'image': {'type':'external','external':{'url':'https://example.com/image.jpg'}}}
         ]
     )
 

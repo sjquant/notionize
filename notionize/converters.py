@@ -6,8 +6,6 @@ from notionize.enums import NotionBlockType, NotionLanguage
 from notionize.models import (
     NotionAnnotations,
     NotionBlock,
-    NotionExternal,
-    NotionImage,
     NotionLink,
     NotionModel,
     NotionRichText,
@@ -28,7 +26,14 @@ class ParagraphConverter(BlockConverter):
     """Converts markdown paragraph tokens into Notion paragraph blocks."""
 
     def convert(self, token: dict[str, Any]) -> NotionBlock:
-        blocks = convert_inline_tokens(token.get("children", []))
+
+        children = token.get("children", [])
+
+        if len(children) == 1 and children[0]["type"] == "image":
+            return ImageConverter().convert(children[0])
+
+        blocks = convert_inline_tokens(children)
+
         return NotionBlock(
             type=NotionBlockType.PARAGRAPH, content={"rich_text": blocks}
         )
@@ -288,8 +293,6 @@ def convert_inline_tokens(tokens: list[dict[str, Any]]) -> list[NotionModel]:
             result.extend(create_formatted_texts(token))
         elif token["type"] == "link":
             result.extend(create_links(token))
-        elif token["type"] == "image":
-            result.extend(create_images(token))
     return result
 
 
@@ -320,13 +323,5 @@ def create_links(token: dict[str, Any]) -> list[NotionRichText]:
         create_text(
             token.get("children", [{}])[0].get("text", ""),
             link=token.get("link", ""),
-        )
-    ]
-
-
-def create_images(token: dict[str, Any]) -> list[NotionImage]:
-    return [
-        NotionImage(
-            external=NotionExternal(url=token.get("attrs", {}).get("url", "")),
         )
     ]
