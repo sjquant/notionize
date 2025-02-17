@@ -1,6 +1,6 @@
 [project]
 name = "notionize"
-version = "0.2.0"
+version = "0.2.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -11,6 +11,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "inline-snapshot>=0.20.2",
     "pyright>=1.1.394",
     "pytest>=8.3.4",
     "pytest-cov>=6.0.0",

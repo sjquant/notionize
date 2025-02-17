@@ -88,7 +88,7 @@ class Notionizer:
             )
 
         blocks = self.convert_blocks(tokens)
-        return [block.model_dump(mode="json") for block in blocks]
+        return [block.model_dump(mode="json", exclude_none=True) for block in blocks]
 
     def convert_blocks(self, tokens: list[dict[str, Any]]) -> list[NotionBlock]:
         """Convert a list of Markdown tokens into Notion blocks.

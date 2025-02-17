@@ -94,12 +94,12 @@ class ListConverter(BlockConverter):
     def convert(self, token: dict[str, Any]) -> list[NotionBlock]:
         res: list[NotionBlock] = []
 
+        is_ordered = token.get("attrs", {}).get("ordered", False)
+
         for item in token.get("children", []):
             converter = ListItemConverter(
                 list_type=(
-                    NotionBlockType.BULLETED
-                    if token.get("ordered", False)
-                    else NotionBlockType.NUMBERED
+                    NotionBlockType.NUMBERED if is_ordered else NotionBlockType.BULLETED
                 )
             )
             res.append(converter.convert(item))
@@ -148,7 +148,11 @@ class QuoteConverter(BlockConverter):
     """Converts markdown blockquote tokens into Notion quote blocks."""
 
     def convert(self, token: dict[str, Any]) -> NotionBlock:
-        blocks = convert_inline_tokens(token.get("children", []))
+        children = token.get("children", [])
+        if children and children[0]["type"] == "paragraph":
+            children = children[0].get("children", [])
+
+        blocks = convert_inline_tokens(children)
         return NotionBlock(type=NotionBlockType.QUOTE, content={"rich_text": blocks})
 
 

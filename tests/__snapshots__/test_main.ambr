@@ -1,492 +1,4 @@
 # serializer version: 1
-# name: test_code_block_conversion
-  list([
-    dict({
-      'code': dict({
-        'language': 'python',
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': '''
-                def hello():
-                    print("Hello")
-  
-              ''',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'code',
-    }),
-    dict({
-      'code': dict({
-        'language': 'javascript',
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': '''
-                console.log('Hello');
-  
-              ''',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'code',
-    }),
-    dict({
-      'code': dict({
-        'language': 'plain text',
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': '''
-                Plain text code block
-  
-              ''',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'code',
-    }),
-  ])
-# ---
-# name: test_divider_conversion
-  list([
-    dict({
-      'object': 'block',
-      'paragraph': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Some text',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'type': 'paragraph',
-    }),
-    dict({
-      'divider': dict({
-      }),
-      'object': 'block',
-      'type': 'divider',
-    }),
-    dict({
-      'object': 'block',
-      'paragraph': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'More text',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'type': 'paragraph',
-    }),
-  ])
-# ---
-# name: test_heading_conversion
-  list([
-    dict({
-      'heading_1': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Heading 1',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'heading_1',
-    }),
-    dict({
-      'heading_2': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Heading 2',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'heading_2',
-    }),
-    dict({
-      'heading_3': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Heading 3',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'heading_3',
-    }),
-    dict({
-      'heading_3': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Heading 4 (should be converted to h3)',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'heading_3',
-    }),
-  ])
-# ---
-# name: test_image_conversion
-  list([
-    dict({
-      'object': 'block',
-      'paragraph': dict({
-        'rich_text': list([
-          dict({
-            'external': dict({
-              'url': 'https://example.com/image.jpg',
-            }),
-            'type': 'image',
-          }),
-        ]),
-      }),
-      'type': 'paragraph',
-    }),
-  ])
-# ---
-# name: test_list_conversion
-  list([
-    dict({
-      'numbered_list_item': dict({
-        'children': list([
-          dict({
-            'numbered_list_item': dict({
-              'children': list([
-                dict({
-                  'numbered_list_item': dict({
-                    'rich_text': list([
-                      dict({
-                        'annotations': dict({
-                          'bold': False,
-                          'code': False,
-                          'color': 'default',
-                          'italic': False,
-                          'strikethrough': False,
-                          'underline': False,
-                        }),
-                        'text': dict({
-                          'content': 'Nested ordered',
-                          'link': None,
-                        }),
-                        'type': 'text',
-                      }),
-                    ]),
-                  }),
-                  'object': 'block',
-                  'type': 'numbered_list_item',
-                }),
-                dict({
-                  'numbered_list_item': dict({
-                    'rich_text': list([
-                      dict({
-                        'annotations': dict({
-                          'bold': False,
-                          'code': False,
-                          'color': 'default',
-                          'italic': False,
-                          'strikethrough': False,
-                          'underline': False,
-                        }),
-                        'text': dict({
-                          'content': 'Another ordered',
-                          'link': None,
-                        }),
-                        'type': 'text',
-                      }),
-                    ]),
-                  }),
-                  'object': 'block',
-                  'type': 'numbered_list_item',
-                }),
-              ]),
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Nested unordered',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'numbered_list_item',
-          }),
-        ]),
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Unordered item 1',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'numbered_list_item',
-    }),
-    dict({
-      'numbered_list_item': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Unordered item 2',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Some paragraph in list',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'numbered_list_item',
-    }),
-    dict({
-      'numbered_list_item': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Ordered item 1',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'numbered_list_item',
-    }),
-    dict({
-      'numbered_list_item': dict({
-        'children': list([
-          dict({
-            'numbered_list_item': dict({
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Nested unordered',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'numbered_list_item',
-          }),
-          dict({
-            'numbered_list_item': dict({
-              'rich_text': list([
-                dict({
-                  'annotations': dict({
-                    'bold': False,
-                    'code': False,
-                    'color': 'default',
-                    'italic': False,
-                    'strikethrough': False,
-                    'underline': False,
-                  }),
-                  'text': dict({
-                    'content': 'Another unordered',
-                    'link': None,
-                  }),
-                  'type': 'text',
-                }),
-              ]),
-            }),
-            'object': 'block',
-            'type': 'numbered_list_item',
-          }),
-        ]),
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'Ordered item 2',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'object': 'block',
-      'type': 'numbered_list_item',
-    }),
-  ])
-# ---
 # name: test_notionize
   list([
     dict({
@@ -503,7 +15,6 @@
             }),
             'text': dict({
               'content': 'Heading 1',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -526,7 +37,6 @@
             }),
             'text': dict({
               'content': 'Heading 2',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -549,7 +59,6 @@
             }),
             'text': dict({
               'content': 'Heading 3',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -573,7 +82,6 @@
             }),
             'text': dict({
               'content': 'This is a paragraph with ',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -588,7 +96,6 @@
             }),
             'text': dict({
               'content': 'bold',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -603,7 +110,6 @@
             }),
             'text': dict({
               'content': ', ',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -618,7 +124,6 @@
             }),
             'text': dict({
               'content': 'italic',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -633,7 +138,6 @@
             }),
             'text': dict({
               'content': ', and ',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -648,7 +152,6 @@
             }),
             'text': dict({
               'content': ' text.',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -660,6 +163,34 @@
       'object': 'block',
       'quote': dict({
         'rich_text': list([
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'This is a blockquote',
+            }),
+            'type': 'text',
+          }),
+          dict({
+            'annotations': dict({
+              'bold': False,
+              'code': False,
+              'color': 'default',
+              'italic': False,
+              'strikethrough': False,
+              'underline': False,
+            }),
+            'text': dict({
+              'content': 'with multiple lines',
+            }),
+            'type': 'text',
+          }),
         ]),
       }),
       'type': 'quote',
@@ -678,7 +209,6 @@
             }),
             'text': dict({
               'content': 'Ordered list item 1',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -691,7 +221,7 @@
       'numbered_list_item': dict({
         'children': list([
           dict({
-            'numbered_list_item': dict({
+            'bulleted_list_item': dict({
               'rich_text': list([
                 dict({
                   'annotations': dict({
@@ -704,17 +234,16 @@
                   }),
                   'text': dict({
                     'content': 'Nested unordered item',
-                    'link': None,
                   }),
                   'type': 'text',
                 }),
               ]),
             }),
             'object': 'block',
-            'type': 'numbered_list_item',
+            'type': 'bulleted_list_item',
           }),
           dict({
-            'numbered_list_item': dict({
+            'bulleted_list_item': dict({
               'rich_text': list([
                 dict({
                   'annotations': dict({
@@ -727,14 +256,13 @@
                   }),
                   'text': dict({
                     'content': 'Another nested item',
-                    'link': None,
                   }),
                   'type': 'text',
                 }),
               ]),
             }),
             'object': 'block',
-            'type': 'numbered_list_item',
+            'type': 'bulleted_list_item',
           }),
         ]),
         'rich_text': list([
@@ -749,7 +277,6 @@
             }),
             'text': dict({
               'content': 'Ordered list item 2',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -759,7 +286,7 @@
       'type': 'numbered_list_item',
     }),
     dict({
-      'numbered_list_item': dict({
+      'bulleted_list_item': dict({
         'rich_text': list([
           dict({
             'annotations': dict({
@@ -772,17 +299,16 @@
             }),
             'text': dict({
               'content': 'Unordered list item',
-              'link': None,
             }),
             'type': 'text',
           }),
         ]),
       }),
       'object': 'block',
-      'type': 'numbered_list_item',
+      'type': 'bulleted_list_item',
     }),
     dict({
-      'numbered_list_item': dict({
+      'bulleted_list_item': dict({
         'children': list([
           dict({
             'numbered_list_item': dict({
@@ -798,7 +324,6 @@
                   }),
                   'text': dict({
                     'content': 'Nested ordered item',
-                    'link': None,
                   }),
                   'type': 'text',
                 }),
@@ -821,7 +346,6 @@
                   }),
                   'text': dict({
                     'content': 'Another nested ordered item',
-                    'link': None,
                   }),
                   'type': 'text',
                 }),
@@ -843,14 +367,13 @@
             }),
             'text': dict({
               'content': 'Another unordered item',
-              'link': None,
             }),
             'type': 'text',
           }),
         ]),
       }),
       'object': 'block',
-      'type': 'numbered_list_item',
+      'type': 'bulleted_list_item',
     }),
     dict({
       'code': dict({
@@ -871,7 +394,6 @@
                     print("Hello World!")
   
               ''',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -901,7 +423,6 @@
             }),
             'text': dict({
               'content': '',
-              'link': None,
             }),
             'type': 'text',
           }),
@@ -942,7 +463,6 @@
                     }),
                     'text': dict({
                       'content': 'Header 1',
-                      'link': None,
                     }),
                     'type': 'text',
                   }),
@@ -959,7 +479,6 @@
                     }),
                     'text': dict({
                       'content': 'Header 2',
-                      'link': None,
                     }),
                     'type': 'text',
                   }),
@@ -983,7 +502,6 @@
                     }),
                     'text': dict({
                       'content': 'Cell 1',
-                      'link': None,
                     }),
                     'type': 'text',
                   }),
@@ -1000,7 +518,6 @@
                     }),
                     'text': dict({
                       'content': 'Cell 2',
-                      'link': None,
                     }),
                     'type': 'text',
                   }),
@@ -1024,7 +541,6 @@
                     }),
                     'text': dict({
                       'content': 'Cell 3',
-                      'link': None,
                     }),
                     'type': 'text',
                   }),
@@ -1041,7 +557,6 @@
                     }),
                     'text': dict({
                       'content': 'Cell 4',
-                      'link': None,
                     }),
                     'type': 'text',
                   }),
@@ -1054,379 +569,6 @@
         'has_column_header': True,
         'has_row_header': False,
         'table_width': 2,
-      }),
-      'type': 'table',
-    }),
-  ])
-# ---
-# name: test_paragraph_conversion
-  list([
-    dict({
-      'object': 'block',
-      'paragraph': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'This is a simple paragraph.',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'type': 'paragraph',
-    }),
-    dict({
-      'object': 'block',
-      'paragraph': dict({
-        'rich_text': list([
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'This has ',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': True,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'bold',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': ' and ',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': True,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': 'italic',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': ' text and ',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': '',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-          dict({
-            'annotations': dict({
-              'bold': False,
-              'code': False,
-              'color': 'default',
-              'italic': False,
-              'strikethrough': False,
-              'underline': False,
-            }),
-            'text': dict({
-              'content': '.',
-              'link': None,
-            }),
-            'type': 'text',
-          }),
-        ]),
-      }),
-      'type': 'paragraph',
-    }),
-  ])
-# ---
-# name: test_quote_conversion
-  list([
-    dict({
-      'object': 'block',
-      'quote': dict({
-        'rich_text': list([
-        ]),
-      }),
-      'type': 'quote',
-    }),
-  ])
-# ---
-# name: test_table_conversion
-  list([
-    dict({
-      'object': 'block',
-      'table': dict({
-        'children': list([
-          dict({
-            'table_row': dict({
-              'cells': list([
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Header 1',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Header 2',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Header 3',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-              ]),
-            }),
-            'type': 'table_row',
-          }),
-          dict({
-            'table_row': dict({
-              'cells': list([
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Normal cell',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': True,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Bold',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': ' cell',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Link',
-                      'link': dict({
-                        'url': 'https://example.com',
-                      }),
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-              ]),
-            }),
-            'type': 'table_row',
-          }),
-          dict({
-            'table_row': dict({
-              'cells': list([
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': True,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Italic',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Multiple',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'lines',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-                list([
-                  dict({
-                    'annotations': dict({
-                      'bold': False,
-                      'code': False,
-                      'color': 'default',
-                      'italic': False,
-                      'strikethrough': False,
-                      'underline': False,
-                    }),
-                    'text': dict({
-                      'content': 'Simple text',
-                      'link': None,
-                    }),
-                    'type': 'text',
-                  }),
-                ]),
-              ]),
-            }),
-            'type': 'table_row',
-          }),
-        ]),
-        'has_column_header': True,
-        'has_row_header': False,
-        'table_width': 3,
       }),
       'type': 'table',
     }),

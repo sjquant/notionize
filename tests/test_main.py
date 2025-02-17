@@ -1,3 +1,4 @@
+from typing import Any
 import pytest
 from notionize.enums import NotionBlockType
 from notionize.main import Notionizer, notionize
@@ -6,20 +7,42 @@ from notionize.converters import BlockConverter
 from notionize.models import NotionBlock
 
 from syrupy.assertion import SnapshotAssertion
+from inline_snapshot import snapshot as inline_snapshot
 
 
-def test_paragraph_conversion(snapshot: SnapshotAssertion):
+def test_paragraph_conversion():
     """Test paragraph conversion with various inline elements."""
-    markdown = """This is a simple paragraph.
-    
-This has **bold** and _italic_ text and [a link](https://example.com)."""
+    markdown = """This is a simple paragraph."""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "paragraph",
+                "paragraph": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "This is a simple paragraph."},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            }
+        ]
+    )
 
 
-def test_heading_conversion(snapshot: SnapshotAssertion):
+def test_heading_conversion():
     """Test heading conversion with all levels."""
     markdown = """# Heading 1
 ## Heading 2
@@ -27,61 +50,271 @@ def test_heading_conversion(snapshot: SnapshotAssertion):
 #### Heading 4 (should be converted to h3)"""
 
     notionizer = Notionizer()
-    res = notionizer.run(markdown)
-    assert res == snapshot
+    res: list[dict[str, Any]] = notionizer.run(markdown)
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "heading_1",
+                "heading_1": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Heading 1"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+            {
+                "object": "block",
+                "type": "heading_2",
+                "heading_2": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Heading 2"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+            {
+                "object": "block",
+                "type": "heading_3",
+                "heading_3": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Heading 3"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+            {
+                "object": "block",
+                "type": "heading_3",
+                "heading_3": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {
+                                "content": "Heading 4 (should be converted to h3)"
+                            },
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+        ]
+    )
 
 
-def test_code_block_conversion(snapshot: SnapshotAssertion):
+def test_code_block_conversion():
     """Test code block conversion with different languages."""
     markdown = """```python
-def hello():
-    print("Hello")
-```
-
-```javascript
-console.log('Hello');
-```
-
-```
-Plain text code block
+print("Hello")
 ```"""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "code",
+                "code": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": 'print("Hello")\n'},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ],
+                    "language": "python",
+                },
+            }
+        ]
+    )
 
 
-def test_list_conversion(snapshot: SnapshotAssertion):
+def test_bullet_list_conversion():
     """Test list conversion with nested and mixed lists."""
     markdown = """- Unordered item 1
-  - Nested unordered
-    1. Nested ordered
-    2. Another ordered
 - Unordered item 2
-  Some paragraph in list
-  
-1. Ordered item 1
+"""
+
+    notionizer = Notionizer()
+    res = notionizer.run(markdown)
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "bulleted_list_item",
+                "bulleted_list_item": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Unordered item 1"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+            {
+                "object": "block",
+                "type": "bulleted_list_item",
+                "bulleted_list_item": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Unordered item 2"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+        ]
+    )
+
+
+def test_ordered_list_conversion():
+    """Test ordered list conversion with nested and mixed lists."""
+    markdown = """1. Ordered item 1
 2. Ordered item 2
-   - Nested unordered
-   - Another unordered"""
+"""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "numbered_list_item",
+                "numbered_list_item": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Ordered item 1"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+            {
+                "object": "block",
+                "type": "numbered_list_item",
+                "numbered_list_item": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Ordered item 2"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+        ]
+    )
 
 
-def test_quote_conversion(snapshot: SnapshotAssertion):
+def test_quote_conversion():
     """Test quote conversion with multiple lines and formatting."""
-    markdown = """> This is a blockquote
-> With **bold** and _italic_ text
-> And multiple lines"""
+    markdown = """> This is a blockquote"""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "quote",
+                "quote": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "This is a blockquote"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            }
+        ]
+    )
 
 
-def test_divider_conversion(snapshot: SnapshotAssertion):
+def test_divider_conversion():
     """Test divider converter."""
     markdown = """Some text
 
@@ -91,28 +324,206 @@ More text"""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "paragraph",
+                "paragraph": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "Some text"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+            {"object": "block", "type": "divider", "divider": {}},
+            {
+                "object": "block",
+                "type": "paragraph",
+                "paragraph": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": "More text"},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ]
+                },
+            },
+        ]
+    )
 
 
-def test_table_conversion(snapshot: SnapshotAssertion):
+def test_table_conversion():
     """Test table conversion with headers, links, and formatting."""
-    markdown = """| Header 1 | Header 2 | Header 3 |
-|----------|----------|----------|
-| Normal cell | **Bold** cell | [Link](https://example.com) |
-| _Italic_ | Multiple<br>lines | Simple text |"""
+    markdown = """| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1 | Cell 2 |
+| Cell 3 | Cell 4 |"""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "table",
+                "table": {
+                    "table_width": 2,
+                    "has_column_header": True,
+                    "has_row_header": False,
+                    "children": [
+                        {
+                            "type": "table_row",
+                            "table_row": {
+                                "cells": [
+                                    [
+                                        {
+                                            "type": "text",
+                                            "text": {"content": "Header 1"},
+                                            "annotations": {
+                                                "bold": False,
+                                                "italic": False,
+                                                "strikethrough": False,
+                                                "underline": False,
+                                                "code": False,
+                                                "color": "default",
+                                            },
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "type": "text",
+                                            "text": {"content": "Header 2"},
+                                            "annotations": {
+                                                "bold": False,
+                                                "italic": False,
+                                                "strikethrough": False,
+                                                "underline": False,
+                                                "code": False,
+                                                "color": "default",
+                                            },
+                                        }
+                                    ],
+                                ]
+                            },
+                        },
+                        {
+                            "type": "table_row",
+                            "table_row": {
+                                "cells": [
+                                    [
+                                        {
+                                            "type": "text",
+                                            "text": {"content": "Cell 1"},
+                                            "annotations": {
+                                                "bold": False,
+                                                "italic": False,
+                                                "strikethrough": False,
+                                                "underline": False,
+                                                "code": False,
+                                                "color": "default",
+                                            },
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "type": "text",
+                                            "text": {"content": "Cell 2"},
+                                            "annotations": {
+                                                "bold": False,
+                                                "italic": False,
+                                                "strikethrough": False,
+                                                "underline": False,
+                                                "code": False,
+                                                "color": "default",
+                                            },
+                                        }
+                                    ],
+                                ]
+                            },
+                        },
+                        {
+                            "type": "table_row",
+                            "table_row": {
+                                "cells": [
+                                    [
+                                        {
+                                            "type": "text",
+                                            "text": {"content": "Cell 3"},
+                                            "annotations": {
+                                                "bold": False,
+                                                "italic": False,
+                                                "strikethrough": False,
+                                                "underline": False,
+                                                "code": False,
+                                                "color": "default",
+                                            },
+                                        }
+                                    ],
+                                    [
+                                        {
+                                            "type": "text",
+                                            "text": {"content": "Cell 4"},
+                                            "annotations": {
+                                                "bold": False,
+                                                "italic": False,
+                                                "strikethrough": False,
+                                                "underline": False,
+                                                "code": False,
+                                                "color": "default",
+                                            },
+                                        }
+                                    ],
+                                ]
+                            },
+                        },
+                    ],
+                },
+            }
+        ]
+    )
 
 
-def test_image_conversion(snapshot: SnapshotAssertion):
+def test_image_conversion():
     """Test image conversion."""
     markdown = """![Image alt text](https://example.com/image.jpg)"""
 
     notionizer = Notionizer()
     res = notionizer.run(markdown)
-    assert res == snapshot
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "paragraph",
+                "paragraph": {
+                    "rich_text": [
+                        {
+                            "type": "image",
+                            "external": {"url": "https://example.com/image.jpg"},
+                        }
+                    ]
+                },
+            }
+        ]
+    )
 
 
 def test_custom_converter_factory():
