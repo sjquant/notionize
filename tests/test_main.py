@@ -174,6 +174,42 @@ print("Hello")
     )
 
 
+def test_code_block_conversion_with_unknown_language():
+    """Test code block conversion with unknown language.
+    It should be converted to plain text)."""
+    markdown = """```unknown
+print("Hello")
+```"""
+
+    notionizer = Notionizer()
+    res = notionizer.run(markdown)
+    assert res == inline_snapshot(
+        [
+            {
+                "object": "block",
+                "type": "code",
+                "code": {
+                    "rich_text": [
+                        {
+                            "type": "text",
+                            "text": {"content": 'print("Hello")\n'},
+                            "annotations": {
+                                "bold": False,
+                                "italic": False,
+                                "strikethrough": False,
+                                "underline": False,
+                                "code": False,
+                                "color": "default",
+                            },
+                        }
+                    ],
+                    "language": "plain text",
+                },
+            }
+        ]
+    )
+
+
 def test_bullet_list_conversion():
     """Test list conversion with nested and mixed lists."""
     markdown = """- Unordered item 1
@@ -512,7 +548,12 @@ def test_image_conversion():
         [
             {
                 "object": "block",
-                "type": 'image', 'image': {'type':'external','external':{'url':'https://example.com/image.jpg'}}}
+                "type": "image",
+                "image": {
+                    "type": "external",
+                    "external": {"url": "https://example.com/image.jpg"},
+                },
+            }
         ]
     )
 

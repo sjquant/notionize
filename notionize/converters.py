@@ -82,15 +82,14 @@ class CodeBlockConverter(BlockConverter):
         )
 
     def _get_lang(self, token) -> str:
-        try:
-            if lang := token.get("info"):
-                return lang
-            elif attrs := token.get("attrs"):
-                return attrs.get("info", NotionLanguage.PLAIN_TEXT)
-            else:
-                return NotionLanguage.PLAIN_TEXT
-        except ValueError:
-            return NotionLanguage.PLAIN_TEXT
+        lang = token.get("info") or token.get("attrs", {}).get(
+            "info", NotionLanguage.PLAIN_TEXT
+        )
+
+        if lang in [e.value for e in NotionLanguage]:
+            return lang
+
+        return NotionLanguage.PLAIN_TEXT.value
 
 
 class ListConverter(BlockConverter):
